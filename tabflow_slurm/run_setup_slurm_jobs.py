@@ -4,17 +4,21 @@ from __future__ import annotations
 
 from tabflow_slurm.setup_slurm_base import BenchmarkSetup
 
+base_path = "/vast/home/sdtemple/"
+env = ".venv"
+partial_path = "rvfl-proj/eiviani/tabarena-elm"
+
 # # -- ELM Benchmark 07/30/2026
 BenchmarkSetup(
-    base_path = "/vast/home/eiviani/",
-    python_from_base_path = ".conda/envs/tab_elm/bin/python",
+    base_path = base_path,
+    python_from_base_path = f"{partial_path}/{env}/bin/python",
     run_script_from_base_path = (
-        "tabarena/tabflow_slurm/run_tabarena_experiment.py"
+        f"{partial_path}/tabflow_slurm/run_tabarena_experiment.py"
     ),
     benchmark_name="elm_experiment_083126",
-    openml_cache_from_base_path = ".cache/openml/org/openml/www",
+    openml_cache_from_base_path = f"{partial_path}/tabflow_slurm/openml-cache/org/openml/www",
     configs_path_from_base_path = (
-        "tabarena/tabflow_slurm/benchmark_configs_"
+        f"{partial_path}/tabflow_slurm/benchmark_configs_"
     ),
     slurm_cpu_partition = "shared-gpu",
     slurm_extra_gres = False,

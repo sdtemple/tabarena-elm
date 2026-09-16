@@ -4,44 +4,48 @@ from __future__ import annotations
 
 from tabflow_slurm.setup_slurm_base import BenchmarkSetup
 
+base_path = "/vast/home/sdtemple/"
+env = ".venv"
+partial_path = "rvfl-proj/eiviani/tabarena-elm"
+
 # # -- ELM Benchmark 04/03/2026
 BenchmarkSetup(
-    base_path = "/vast/home/eiviani/",
-    python_from_base_path = ".conda/envs/tab_elm/bin/python",
+    base_path = base_path,
+    python_from_base_path = f"{partial_path}/{env}/bin/python",
     run_script_from_base_path = (
-        "tabarena/tabflow_slurm/run_tabarena_experiment.py"
+        f"{partial_path}/tabflow_slurm/run_tabarena_experiment.py"
     ),
     benchmark_name="elm_experiment_040326_binary",
-    openml_cache_from_base_path = ".cache/openml/org/openml/www",
+    openml_cache_from_base_path = f"{partial_path}/tabflow_slurm/openml-cache/org/openml/www",
     configs_path_from_base_path = (
-        "tabarena/tabflow_slurm/benchmark_configs_"
+        f"{partial_path}/tabflow_slurm/benchmark_configs_"
     ),
     slurm_cpu_partition = "shared-gpu",
     slurm_extra_gres = False,
     models = [
         # existing models …
-        ("TabDPT", "all"),
-        ("TabICL", "all"),
-        ("TabPFNv2", "all"),
-        ("Mitra", "all"),
+        # ("TabDPT", "all"),
+        # ("TabICL", "all"),
+        # ("TabPFNv2", "all"),
+        # ("Mitra", "all"),
         # -- Neural networks
-        ("TabM", "all"),
-        ("RealMLP", "all"),
-        ("ModernNCA", "all"),
-        ("FastaiMLP", "all"),
-        ("TorchMLP", "all"),
+        # ("TabM", "all"),
+        # ("RealMLP", "all"),
+        # ("ModernNCA", "all"),
+        # ("FastaiMLP", "all"),
+        # ("TorchMLP", "all"),
         # -- Tree-based models
-        ("CatBoost", "all"),
-        ("EBM", "all"),
-        ("ExtraTrees", "all"),
-        ("LightGBM", "all"),
+        # ("CatBoost", "all"),
+        # ("EBM", "all"),
+        # ("ExtraTrees", "all"),
+        # ("LightGBM", "all"),
         ("RandomForest", "all"),
-        ("XGBoost", "all"),
+        # ("XGBoost", "all"),
         # -- Baselines
-        ("KNN", "all"),
+        # ("KNN", "all"),
         ("Linear", "all"),
         # -- Other
-        ("xRFM", "all"),
+        # ("xRFM", "all"),
         ("ELM", "all"),
     ],
     num_gpus=0,
@@ -53,42 +57,42 @@ BenchmarkSetup(
 
 # # -- ELM Benchmark 04/03/2026
 BenchmarkSetup(
-    base_path = "/vast/home/eiviani/",
-    python_from_base_path = ".conda/envs/tab_elm/bin/python",
+    base_path = base_path,
+    python_from_base_path = f"{partial_path}/{env}/bin/python",
     run_script_from_base_path = (
-        "tabarena/tabflow_slurm/run_tabarena_experiment.py"
+        f"{partial_path}/tabflow_slurm/run_tabarena_experiment.py"
     ),
     benchmark_name="elm_experiment_040326_multiclass",
-    openml_cache_from_base_path = ".cache/openml/org/openml/www",
+    openml_cache_from_base_path = f"{partial_path}/tabflow_slurm/openml-cache/org/openml/www",
     configs_path_from_base_path = (
-        "tabarena/tabflow_slurm/benchmark_configs_"
+        f"{partial_path}/tabflow_slurm/benchmark_configs_"
     ),
     slurm_cpu_partition = "shared-gpu",
     slurm_extra_gres = False,
     models = [
         # existing models …
-        ("TabDPT", "all"),
-        ("TabICL", "all"),
-        ("TabPFNv2", "all"),
-        ("Mitra", "all"),
+        # ("TabDPT", "all"),
+        # ("TabICL", "all"),
+        # ("TabPFNv2", "all"),
+        # ("Mitra", "all"),
         # -- Neural networks
-        ("TabM", "all"),
-        ("RealMLP", "all"),
-        ("ModernNCA", "all"),
-        ("FastaiMLP", "all"),
-        ("TorchMLP", "all"),
+        # ("TabM", "all"),
+        # ("RealMLP", "all"),
+        # ("ModernNCA", "all"),
+        # ("FastaiMLP", "all"),
+        # ("TorchMLP", "all"),
         # -- Tree-based models
-        ("CatBoost", "all"),
-        ("EBM", "all"),
-        ("ExtraTrees", "all"),
-        ("LightGBM", "all"),
+        # ("CatBoost", "all"),
+        # ("EBM", "all"),
+        # ("ExtraTrees", "all"),
+        # ("LightGBM", "all"),
         ("RandomForest", "all"),
-        ("XGBoost", "all"),
+        # ("XGBoost", "all"),
         # -- Baselines
-        ("KNN", "all"),
+        # ("KNN", "all"),
         ("Linear", "all"),
         # -- Other
-        ("xRFM", "all"),
+        # ("xRFM", "all"),
         ("ELM", "all"),
     ],
     num_gpus=0,
@@ -100,42 +104,42 @@ BenchmarkSetup(
 
 # # -- ELM Benchmark 04/03/2026
 BenchmarkSetup(
-    base_path = "/vast/home/eiviani/",
-    python_from_base_path = ".conda/envs/tab_elm/bin/python",
+    base_path = base_path,
+    python_from_base_path = f"{partial_path}/{env}/bin/python",
     run_script_from_base_path = (
-        "tabarena/tabflow_slurm/run_tabarena_experiment.py"
+        f"{partial_path}/tabflow_slurm/run_tabarena_experiment.py"
     ),
     benchmark_name="elm_experiment_040326_regression",
-    openml_cache_from_base_path = ".cache/openml/org/openml/www",
+    openml_cache_from_base_path = f"{partial_path}/tabflow_slurm/openml-cache/org/openml/www",
     configs_path_from_base_path = (
-        "tabarena/tabflow_slurm/benchmark_configs_"
+        f"{partial_path}/tabflow_slurm/benchmark_configs_"
     ),
     slurm_cpu_partition = "shared-gpu",
     slurm_extra_gres = False,
     models = [
         # existing models …
-        ("TabDPT", "all"),
-        ("TabICL", "all"),
-        ("TabPFNv2", "all"),
-        ("Mitra", "all"),
+        # ("TabDPT", "all"),
+        # ("TabICL", "all"),
+        # ("TabPFNv2", "all"),
+        # ("Mitra", "all"),
         # -- Neural networks
-        ("TabM", "all"),
-        ("RealMLP", "all"),
-        ("ModernNCA", "all"),
-        ("FastaiMLP", "all"),
-        ("TorchMLP", "all"),
+        # ("TabM", "all"),
+        # ("RealMLP", "all"),
+        # ("ModernNCA", "all"),
+        # ("FastaiMLP", "all"),
+        # ("TorchMLP", "all"),
         # -- Tree-based models
-        ("CatBoost", "all"),
-        ("EBM", "all"),
-        ("ExtraTrees", "all"),
-        ("LightGBM", "all"),
+        # ("CatBoost", "all"),
+        # ("EBM", "all"),
+        # ("ExtraTrees", "all"),
+        # ("LightGBM", "all"),
         ("RandomForest", "all"),
-        ("XGBoost", "all"),
+        # ("XGBoost", "all"),
         # -- Baselines
-        ("KNN", "all"),
+        # ("KNN", "all"),
         ("Linear", "all"),
         # -- Other
-        ("xRFM", "all"),
+        # ("xRFM", "all"),
         ("ELM", "all"),
     ],
     num_gpus=0,

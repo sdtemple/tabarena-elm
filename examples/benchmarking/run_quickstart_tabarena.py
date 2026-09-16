@@ -29,20 +29,20 @@ if __name__ == '__main__':
 
     # This list of methods will be fit sequentially on each task (dataset x fold)
     methods = [
-        # This will be a `config` in EvaluationRepository, because it computes out-of-fold predictions and thus can be used for post-hoc ensemble.
-        AGModelBagExperiment(  # Wrapper for fitting a single bagged model via AutoGluon
-            # The name you want the config to have
-            name="LightGBM_c1_BAG_L1_Reproduced",
+        # # This will be a `config` in EvaluationRepository, because it computes out-of-fold predictions and thus can be used for post-hoc ensemble.
+        # AGModelBagExperiment(  # Wrapper for fitting a single bagged model via AutoGluon
+        #     # The name you want the config to have
+        #     name="LightGBM_c1_BAG_L1_Reproduced",
 
-            # The class of the model. Can also be a string if AutoGluon recognizes it, such as `"GBM"`
-            # Supports any model that inherits from `autogluon.core.models.AbstractModel`
-            model_cls=LGBModel,
-            model_hyperparameters={
-                # "ag_args_ensemble": {"fold_fitting_strategy": "sequential_local"},  # uncomment to fit folds sequentially, allowing for use of a debugger
-            },  # The non-default model hyperparameters.
-            num_bag_folds=8,  # num_bag_folds=8 was used in the TabArena 2025 paper
-            time_limit=3600,  # time_limit=3600 was used in the TabArena 2025 paper
-        ),
+        #     # The class of the model. Can also be a string if AutoGluon recognizes it, such as `"GBM"`
+        #     # Supports any model that inherits from `autogluon.core.models.AbstractModel`
+        #     model_cls=LGBModel,
+        #     model_hyperparameters={
+        #         # "ag_args_ensemble": {"fold_fitting_strategy": "sequential_local"},  # uncomment to fit folds sequentially, allowing for use of a debugger
+        #     },  # The non-default model hyperparameters.
+        #     num_bag_folds=8,  # num_bag_folds=8 was used in the TabArena 2025 paper
+        #     time_limit=3600,  # time_limit=3600 was used in the TabArena 2025 paper
+        # ),
         AGModelBagExperiment(
             name="TA-RealMLP_c1_BAG_L1_Reproduced",
             model_cls=RealMLPModel,

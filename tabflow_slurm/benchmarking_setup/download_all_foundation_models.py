@@ -21,8 +21,8 @@ if __name__ == "__main__":
     except ImportError:
         print("TabICL not installed. Skipping downloading its models.")
     else:
-        TabICLClassifier(checkpoint_version="tabicl-classifier-v1.1-0506.ckpt")._load_model()
-        TabICLClassifier(checkpoint_version="tabicl-classifier-v1-0208.ckpt")._load_model()
+        TabICLClassifier(checkpoint_version="tabicl-classifier-v1.1-20250506.ckpt")._load_model()
+        TabICLClassifier(checkpoint_version="tabicl-classifier-v1-20250208.ckpt")._load_model()
 
     # TabDPT
     try:
