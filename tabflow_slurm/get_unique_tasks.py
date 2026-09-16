@@ -13,7 +13,7 @@ line_split = line.split("task_id")[1:]
 
 keep = []
 for _ in line_split:
-    keep.append(_)
+    keep.append(_[3:9])
 keep = np.unique(keep)
 
 print(f"There are {len(keep)} unique task IDs")
