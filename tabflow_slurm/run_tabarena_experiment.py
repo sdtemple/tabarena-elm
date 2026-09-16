@@ -37,7 +37,7 @@ def setup_slurm_job(
         print("Using the default OpenML cache directory.")
     else:
         print(f"Setting OpenML cache directory to: {openml_cache_dir}")
-        openml.config.set_root_cache_directory(root_cache_directory=openml_cache_dir)
+        openml.config.set_root_cache_directory(root_cache_directory=openml_cache_dir, download_data=False)
 
     # SLURM save Ray setup in a shared resource system
     ray_dir = None
