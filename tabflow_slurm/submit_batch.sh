@@ -8,6 +8,9 @@ CHUNK_SIZE=98 # one reserved for controller
 
 EXPERIMENT=${3}
 
+BASEPATH=${4:-/vast/home/sdtemple}
+PARTIALPATH=${5:-rvfl-proj/eiviani/tabarena-elm/tabflow_slurm}
+
 if (( START > FINAL )); then
     echo "All array tasks have been submitted."
     exit 0
@@ -26,9 +29,9 @@ ARRAY_JOB_ID=$(
         --partition=shared-gpu \
         --cpus-per-task=8 \
         --mem-per-cpu=4G \
-        --output="/vast/home/eiviani/slurm_out/${EXPERIMENT}/%A/slurm-%A_%a.out" \
-        /vast/home/eiviani/tabarena/tabflow_slurm/submit_template.sh \
-        /vast/home/eiviani/tabarena/tabflow_slurm/slurm_run_data_${EXPERIMENT}.json
+        --output="$BASEPATH/slurm_out/${EXPERIMENT}/%A/slurm-%A_%a.out" \
+        $BASEPATH/$PARTIALPATH/submit_template.sh \
+        $BASEPATH/$PARTIALPATH/slurm_run_data_${EXPERIMENT}.json
 )
 
 echo "Submitted array job${ARRAY_JOB_ID}"
