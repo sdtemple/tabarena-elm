@@ -1,5 +1,5 @@
 #!/bin/bash
-basepath=${1:-/Users/sdtemple}
+basepath=${1:-/vast/home/sdtemple}
 partialpath=${2:-rvfl-proj/eiviani/tabarena-elm/tabflow_slurm}
 taskid=${3:-363612}
 experiment=${4:-elm_experiment_083126}
