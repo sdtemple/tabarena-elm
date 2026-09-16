@@ -6,7 +6,6 @@ import shutil
 from typing import Any
 
 import openml
-openml.config.connection_mode = "offline"
 
 
 def setup_slurm_job(
