@@ -28,10 +28,10 @@ ARRAY_JOB_ID=$(
         --array="${START}-${END}%${CHUNK_SIZE}" \
         --partition=standard \
         --cpus-per-task=8 \
-        --mem-per-cpu=4G \
+        --mem=500G \
         --requeue \
         --job-name tabarena \
-        --propagate=None \
+        --propagate=NONE \
         --export=ALL,TABPFN_DISABLE_TELEMETRY=1 \
         --output="$BASEPATH/slurm_out/${EXPERIMENT}/%A/slurm-%A_%a.out" \
         $BASEPATH/$PARTIALPATH/submit_template.sh \
