@@ -8,8 +8,9 @@ CHUNK_SIZE=98 # one reserved for controller
 
 EXPERIMENT=${3}
 
-BASEPATH=${4:-/vast/home/sdtemple}
+BASEPATH=${4:-/users/sdtemple}
 PARTIALPATH=${5:-rvfl-proj/eiviani/tabarena-elm/tabflow_slurm}
+OPENML_CACHE_DIR=${6:-rvfl-proj/eiviani/tabarena-elm/tabflow_slurm/openml-cache/org/openml/www}
 
 if (( START > FINAL )); then
     echo "All array tasks have been submitted."
@@ -20,6 +21,17 @@ END=$((START + CHUNK_SIZE - 1))
 if (( END > FINAL )); then
     END=$FINAL
 fi
+
+# Hugging Face Configuration
+export HF_DATASETS_OFFLINE=1
+export TRANSFORMERS_OFFLINE=1
+
+# OpenML Configuration
+export OPENML_CACHEDIR=${BASEPATH}/${OPENML_CACHE_DIR}
+export OPENML_AVOID_DUPLICATE_RUNS="False"
+
+# Tabular Models Configuration
+export TABPFN_DISABLE_TELEMETRY=1
 
 echo "Submitting array tasks${START}-${END}"
 
@@ -32,7 +44,7 @@ ARRAY_JOB_ID=$(
         --requeue \
         --job-name tabarena \
         --propagate=NONE \
-        --export=ALL,TABPFN_DISABLE_TELEMETRY=1 \
+        --export=ALL \
         --output="$BASEPATH/slurm_out/${EXPERIMENT}/%A/slurm-%A_%a.out" \
         $BASEPATH/$PARTIALPATH/submit_template.sh \
         $BASEPATH/$PARTIALPATH/slurm_run_data_${EXPERIMENT}.json
