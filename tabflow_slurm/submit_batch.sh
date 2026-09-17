@@ -10,7 +10,6 @@ EXPERIMENT=${3}
 
 BASEPATH=${4:-/users/sdtemple}
 PARTIALPATH=${5:-rvfl-proj/eiviani/tabarena-elm/tabflow_slurm}
-OPENML_CACHE_DIR=${6:-rvfl-proj/eiviani/tabarena-elm/tabflow_slurm/openml-cache/org/openml/www}
 
 if (( START > FINAL )); then
     echo "All array tasks have been submitted."
@@ -27,7 +26,7 @@ export HF_DATASETS_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
 
 # OpenML Configuration
-export OPENML_CACHEDIR=${BASEPATH}/${OPENML_CACHE_DIR}
+export OPENML_CACHEDIR=${BASEPATH}/${PARTIALPATH}
 export OPENML_AVOID_DUPLICATE_RUNS="False"
 
 # Tabular Models Configuration
