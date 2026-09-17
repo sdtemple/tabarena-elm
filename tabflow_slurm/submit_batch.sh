@@ -3,10 +3,10 @@
 set -euo pipefail
 
 START=${1:-0}
-FINAL=${2}
+FINAL=${2:1} # change to value from stdout
 CHUNK_SIZE=98 # one reserved for controller
 
-EXPERIMENT=${3}
+EXPERIMENT=${3:elm_experiment_260917}
 
 BASEPATH=${4:-/users/sdtemple}
 PARTIALPATH=${5:-rvfl-proj/eiviani/tabarena-elm/tabflow_slurm}
