@@ -26,7 +26,7 @@ echo "Submitting array tasks${START}-${END}"
 ARRAY_JOB_ID=$(
     sbatch --parsable \
         --array="${START}-${END}%${CHUNK_SIZE}" \
-        --partition=shared-gpu \
+        --partition=standard \
         --cpus-per-task=8 \
         --mem-per-cpu=4G \
         --output="$BASEPATH/slurm_out/${EXPERIMENT}/%A/slurm-%A_%a.out" \
