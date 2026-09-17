@@ -29,6 +29,10 @@ ARRAY_JOB_ID=$(
         --partition=standard \
         --cpus-per-task=8 \
         --mem-per-cpu=4G \
+        --requeue \
+        --job-name tabarena \
+        --propagate=None \
+        --export=ALL,TABPFN_DISABLE_TELEMETRY=1 \
         --output="$BASEPATH/slurm_out/${EXPERIMENT}/%A/slurm-%A_%a.out" \
         $BASEPATH/$PARTIALPATH/submit_template.sh \
         $BASEPATH/$PARTIALPATH/slurm_run_data_${EXPERIMENT}.json
