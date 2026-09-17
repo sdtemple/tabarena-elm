@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 from tabflow_slurm.setup_slurm_base import BenchmarkSetup
+from datetime import datetime
 
-base_path = "/vast/home/sdtemple/"
+base_path = "/users/sdtemple/"
 env = ".venv"
 partial_path = "rvfl-proj/eiviani/tabarena-elm"
+formatted_date = datetime.today().strftime("%y%m%d")
 
 # # -- ELM Benchmark 04/03/2026
 BenchmarkSetup(
@@ -15,12 +17,12 @@ BenchmarkSetup(
     run_script_from_base_path = (
         f"{partial_path}/tabflow_slurm/run_tabarena_experiment.py"
     ),
-    benchmark_name="elm_experiment_040326_binary",
+    benchmark_name=f"elm_experiment_{formatted_date}_binary",
     openml_cache_from_base_path = f"{partial_path}/tabflow_slurm/openml-cache/org/openml/www",
     configs_path_from_base_path = (
         f"{partial_path}/tabflow_slurm/benchmark_configs_"
     ),
-    slurm_cpu_partition = "shared-gpu",
+    slurm_cpu_partition = "standard",
     slurm_extra_gres = False,
     models = [
         # existing models …
@@ -62,12 +64,12 @@ BenchmarkSetup(
     run_script_from_base_path = (
         f"{partial_path}/tabflow_slurm/run_tabarena_experiment.py"
     ),
-    benchmark_name="elm_experiment_040326_multiclass",
+    benchmark_name=f"elm_experiment_{formatted_date}_multiclass",
     openml_cache_from_base_path = f"{partial_path}/tabflow_slurm/openml-cache/org/openml/www",
     configs_path_from_base_path = (
         f"{partial_path}/tabflow_slurm/benchmark_configs_"
     ),
-    slurm_cpu_partition = "shared-gpu",
+    slurm_cpu_partition = "standard",
     slurm_extra_gres = False,
     models = [
         # existing models …
@@ -109,12 +111,12 @@ BenchmarkSetup(
     run_script_from_base_path = (
         f"{partial_path}/tabflow_slurm/run_tabarena_experiment.py"
     ),
-    benchmark_name="elm_experiment_040326_regression",
+    benchmark_name=f"elm_experiment_{formatted_date}_regression",
     openml_cache_from_base_path = f"{partial_path}/tabflow_slurm/openml-cache/org/openml/www",
     configs_path_from_base_path = (
         f"{partial_path}/tabflow_slurm/benchmark_configs_"
     ),
-    slurm_cpu_partition = "shared-gpu",
+    slurm_cpu_partition = "standard",
     slurm_extra_gres = False,
     models = [
         # existing models …

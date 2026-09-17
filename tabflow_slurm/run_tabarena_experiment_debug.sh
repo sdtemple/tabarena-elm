@@ -1,8 +1,8 @@
 #!/bin/bash
-basepath=${1:-/vast/home/sdtemple}
+basepath=${1:-/users/sdtemple}
 partialpath=${2:-rvfl-proj/eiviani/tabarena-elm/tabflow_slurm}
 taskid=${3:-363612}
-experiment=${4:-elm_experiment_083126}
+experiment=${4:-elm_experiment_260917}
 env=${5:-rvfl-proj/eiviani/tabarena-elm/.venv}
 
 source $basepath/$env/bin/activate
