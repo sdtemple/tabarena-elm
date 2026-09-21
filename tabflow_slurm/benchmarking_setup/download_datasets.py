@@ -38,7 +38,8 @@ if __name__ == "__main__":
     match args.action:
         case "download":
             for task in tqdm.tqdm(tasks):
-                openml.tasks.get_task(task, download_data=True, download_qualities=True, download_splits=True)
+                task_obj = openml.tasks.get_task(task, download_data=True, download_qualities=True, download_splits=True)
+                _ = task_obj.get_dataset().features
         case "list":
             for task in tasks:
                 print(task)

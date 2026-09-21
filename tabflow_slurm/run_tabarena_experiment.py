@@ -6,6 +6,8 @@ import shutil
 from typing import Any
 
 import openml
+openml.config.retry_policy = "robot"
+openml.config.connection_n_retries = 0
 
 
 def setup_slurm_job(

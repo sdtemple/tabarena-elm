@@ -26,7 +26,7 @@ export HF_DATASETS_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
 
 # OpenML Configuration
-export OPENML_CACHEDIR=${BASEPATH}/${PARTIALPATH}
+export OPENML_CACHEDIR=${BASEPATH}/${PARTIALPATH}/openml-cache
 export OPENML_AVOID_DUPLICATE_RUNS="False"
 
 # Tabular Models Configuration

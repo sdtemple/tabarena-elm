@@ -18,7 +18,7 @@ BenchmarkSetup(
         f"{partial_path}/tabflow_slurm/run_tabarena_experiment.py"
     ),
     benchmark_name=f"elm_experiment_{formatted_date}",
-    openml_cache_from_base_path = f"{partial_path}/tabflow_slurm",
+    openml_cache_from_base_path = f"{partial_path}/tabflow_slurm/openml-cache",
     configs_path_from_base_path = (
         f"{partial_path}/tabflow_slurm/benchmark_configs_"
     ),
