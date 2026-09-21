@@ -3,10 +3,10 @@
 set -euo pipefail
 
 START=${1:-0}
-FINAL=${2:1} # change to value from stdout
+FINAL=${2:-1} # change to value from stdout
 CHUNK_SIZE=98 # one reserved for controller
 
-EXPERIMENT=${3:elm_experiment_260917}
+EXPERIMENT=${3:-elm_experiment_260921}
 
 BASEPATH=${4:-/users/sdtemple}
 PARTIALPATH=${5:-rvfl-proj/eiviani/tabarena-elm/tabflow_slurm}
@@ -40,6 +40,7 @@ ARRAY_JOB_ID=$(
         --partition=standard \
         --cpus-per-task=8 \
         --mem=500G \
+        --time=3:00:00 \
         --requeue \
         --job-name tabarena \
         --propagate=NONE \
