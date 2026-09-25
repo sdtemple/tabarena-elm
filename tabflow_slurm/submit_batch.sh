@@ -40,7 +40,7 @@ ARRAY_JOB_ID=$(
         --partition=standard \
         --cpus-per-task=8 \
         --mem=480G \
-        --time=3:00:00 \
+        --time=8:00:00 \
         --requeue \
         --job-name tabarena \
         --propagate=NONE \
