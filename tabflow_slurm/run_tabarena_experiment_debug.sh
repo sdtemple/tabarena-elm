@@ -12,7 +12,7 @@ python $basepath/$partialpath/run_tabarena_experiment.py \
     --repeat 0 \
     --configs_yaml_file $basepath/$partialpath/benchmark_configs_$experiment.yaml \
     --config_index 0,1,2 \
-    --openml_cache_dir $basepath/$partialpath/openml-cache/org/openml/www \
+    --openml_cache_dir $basepath/$partialpath/openml-cache \
     --output_dir /$basepath/output/$experiment \
     --num_cpus 1 \
     --num_gpus 0 \

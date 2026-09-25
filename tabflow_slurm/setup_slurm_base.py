@@ -320,7 +320,7 @@ class BenchmarkSetup:
     def output_dir(self) -> str:
         """Output directory for the benchmark."""
         return (
-            self.base_path + self.output_dir_base_from_base_path + self.benchmark_name
+            self.storage_path + self.output_dir_base_from_base_path + self.benchmark_name
         )
 
     @property
@@ -349,7 +349,7 @@ class BenchmarkSetup:
     def slurm_log_output(self) -> str:
         """Directory for the SLURM output logs."""
         return (
-            self.base_path + self.slurm_log_output_from_base_path + self.benchmark_name
+            self.storage_path + self.slurm_log_output_from_base_path + self.benchmark_name
         )
 
     @property

@@ -39,7 +39,7 @@ ARRAY_JOB_ID=$(
         --array="${START}-${END}%${CHUNK_SIZE}" \
         --partition=standard \
         --cpus-per-task=8 \
-        --mem=500G \
+        --mem=480G \
         --time=3:00:00 \
         --requeue \
         --job-name tabarena \

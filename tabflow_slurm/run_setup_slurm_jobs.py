@@ -6,6 +6,7 @@ from tabflow_slurm.setup_slurm_base import BenchmarkSetup
 from datetime import datetime
 
 base_path = "/users/sdtemple/"
+storage_path = "/lustre/scratch5/sdtemple/"
 env = ".venv"
 partial_path = "rvfl-proj/eiviani/tabarena-elm"
 formatted_date = datetime.today().strftime("%y%m%d")
@@ -13,6 +14,7 @@ formatted_date = datetime.today().strftime("%y%m%d")
 # # -- ELM Benchmark 07/30/2026
 BenchmarkSetup(
     base_path = base_path,
+    storage_path = storage_path,
     python_from_base_path = f"{partial_path}/{env}/bin/python",
     run_script_from_base_path = (
         f"{partial_path}/tabflow_slurm/run_tabarena_experiment.py"
