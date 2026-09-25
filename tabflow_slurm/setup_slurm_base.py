@@ -33,6 +33,7 @@ class BenchmarkSetup:
     # Cluster Settings
     # ----------------
     base_path: str = "/work/dlclarge2/purucker-tabarena/"
+    storage_path: str = "/lustre/scratch5/sdtemple/"
     """Base path for the project, code, and results. Within this directory, all results, code, and logs for TabArena will
     be saved. Adjust below as needed if more than one base path is desired. On a typical SLURM system, this base path
     should point to a persistent workspace that all your jobs can access.
