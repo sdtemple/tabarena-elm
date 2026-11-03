@@ -13,6 +13,7 @@ from tabarena.benchmark.models.ag.tabicl.tabicl_model import TabICLModel, TabICL
 from tabarena.benchmark.models.ag.tabm.tabm_model import TabMModel
 from tabarena.benchmark.models.ag.tabpfnv2_5.tabpfnv2_5_model import RealTabPFNv25Model
 from tabarena.benchmark.models.ag.xrfm.xrfm_model import XRFMModel
+from tabarena.benchmark.models.ag.gfdl_torch.gfdl_torch import RVFLTorch, ELMTorch
 
 __all__ = [
     "ExplainableBoostingMachineModel",
@@ -30,4 +31,6 @@ __all__ = [
     "TabICLv2Model",
     "TabMModel",
     "XRFMModel",
+    "ELMTorch",
+    "RVFLTorch",
 ]
