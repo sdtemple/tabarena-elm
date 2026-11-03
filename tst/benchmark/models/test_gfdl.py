@@ -34,7 +34,7 @@ def test_gfdl_torch():
     try:
         from autogluon.tabular.testing import FitHelper
         from tabarena.benchmark.models.ag.gfdl_torch.gfdl_torch import ELMTorch
-        model_cls = ELM
+        model_cls = ELMTorch
         FitHelper.verify_model(model_cls=model_cls, model_hyperparameters=model_hyperparameters)
     except ImportError as err:
         pytest.skip(
@@ -45,7 +45,7 @@ def test_gfdl_torch():
     try:
         from autogluon.tabular.testing import FitHelper
         from tabarena.benchmark.models.ag.gfdl_torch.gfdl_torch import RVFLTorch
-        model_cls = RVFL
+        model_cls = RVFLTorch
         FitHelper.verify_model(model_cls=model_cls, model_hyperparameters=model_hyperparameters)
     except ImportError as err:
         pytest.skip(

@@ -26,6 +26,10 @@ class GFDLTorchBase(AbstractModel):
     ag_key = "gfdl_torch_base"
     ag_name = "GFDLTorchBase"
 
+    _supported_problem_types = ["regression",
+                                "multiclass",
+                                "binary"]
+
     direct_links: bool | None = None
 
     def __init__(self, **kwargs):
@@ -73,7 +77,6 @@ class GFDLTorchBase(AbstractModel):
             model_cls = GFDLClassifier
 
         X = self.preprocess(X, is_train=True)
-        X = torch.from_numpy(X)
         params = self._get_model_params()
         
         params["direct_links"] = self.direct_links
@@ -112,9 +115,9 @@ class GFDLTorchBase(AbstractModel):
         default_auxiliary_params.update(extra_auxiliary_params)
         return default_auxiliary_params
     
-    @classmethod
-    def supported_problem_types(cls) -> list[str] | None:
-        return ["binary", "multiclass", "regression"]
+    # @classmethod
+    # def supported_problem_types(cls) -> list[str] | None:
+    #     return ["binary", "multiclass", "regression"]
 
 
 class ELMTorch(GFDLTorchBase):
