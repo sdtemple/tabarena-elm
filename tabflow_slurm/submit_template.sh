@@ -72,7 +72,18 @@ echo "Task ID: TASK_ID"
 echo "Fold: $FOLD"
 echo "Repeat: $REPEAT"
 
+# GPT Sol 6 provided this solution
+# RayTune may override this RAY_TMPDIR env var, but this
+# is a harmless setup
+# TabArena/AutoGluon use RayTune somewhere somehow but it
+# is out of scope for us to debug this os racing error
+# Make this configurable if it solves the os racing error
+RAY_TMP_PARENT="${TMPDIR:-/tmp/ray_tmp_sdtemple}"
+mkdir -p "$RAY_TMP_PARENT"
 
+RAY_TMPDIR="$(mktemp -d \
+    "${RAY_TMP_PARENT%/}/tabarena-ray-${SLURM_JOB_ID}-${SLURM_ARRAY_TASK_ID}")"
+export RAY_TMPDIR
 
 # Split CONFIG_INDEX into individual elements and loop
 IFS=',' read -ra CONFIG_ARRAY <<< "$CONFIG_INDEX"
