@@ -91,7 +91,7 @@ IFS=',' read -ra CONFIG_ARRAY <<< "$CONFIG_INDEX"
 for CI in "${CONFIG_ARRAY[@]}"; do
     echo "Running config_index=$CI"
 
-    $PYTHON_PATH $RUNSCRIPT \
+    SCIPY_ARRAY_API=1 $PYTHON_PATH $RUNSCRIPT \
         --task_id $TASK_ID \
         --fold $FOLD \
         --repeat $REPEAT \

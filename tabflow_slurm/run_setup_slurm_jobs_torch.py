@@ -17,7 +17,7 @@ BenchmarkSetup(
     storage_path = storage_path,
     python_from_base_path = f"{partial_path}/{env}/bin/python",
     run_script_from_base_path = (
-        f"{partial_path}/tabflow_slurm/run_tabarena_experiment.py"
+        f"{partial_path}/tabflow_slurm/run_tabarena_experiment_torch.py"
     ),
     benchmark_name=f"elm_experiment_{formatted_date}_torch",
     openml_cache_from_base_path = f"{partial_path}/tabflow_slurm/openml-cache",

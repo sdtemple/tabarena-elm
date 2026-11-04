@@ -11,6 +11,8 @@ import torch
 
 from typing import TYPE_CHECKING
 
+from sklearn import config_context
+
 if TYPE_CHECKING:
     import pandas as pd
 
@@ -76,19 +78,39 @@ class GFDLTorchBase(AbstractModel):
             # case for 'binary' and 'multiclass',
             model_cls = GFDLClassifier
 
-        X = self.preprocess(X, is_train=True)
+        X = self._preprocess(X, is_train=True)
+        # y = torch.from_numpy(y.to_numpy())
         params = self._get_model_params()
         
         params["direct_links"] = self.direct_links
 
         self.model = model_cls(**params)
-        self.model.fit(X, y)
+        with config_context(array_api_dispatch=True):
+            self.model.fit(X, y)
 
     def _predict(self, X: pd.DataFrame, **kwargs) -> np.ndarray:
         """Preprocesses test data, converts to torch tensors, and outputs NumPy predictions."""
         X = self._preprocess(X, is_train=False, **kwargs)
-        preds_tensor = self.model(X)
-        return preds_tensor.cpu().numpy()
+
+        with config_context(array_api_dispatch=True):
+            preds = self.model.predict(X)
+
+        if isinstance(preds, torch.Tensor):
+            return preds.detach().cpu().numpy()
+        return np.asarray(preds)
+
+    def _predict_proba(self, X: pd.DataFrame, **kwargs) -> np.ndarray:
+        X = self._preprocess(X, is_train=False, **kwargs)
+
+        with config_context(array_api_dispatch=True):
+            if self.problem_type == "regression":
+                preds = self.model.predict(X)
+            else:
+                preds = self.model.predict_proba(X)
+
+        if isinstance(preds, torch.Tensor):
+            return preds.detach().cpu().numpy()
+        return np.asarray(preds)
 
     def _set_default_params(self):
         """Default parameters for the model."""
