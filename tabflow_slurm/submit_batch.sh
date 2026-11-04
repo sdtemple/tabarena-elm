@@ -6,10 +6,11 @@ START=${1:-0}
 FINAL=${2:-1} # change to value from stdout
 CHUNK_SIZE=98 # one reserved for controller
 
-EXPERIMENT=${3:-elm_experiment_260921}
+EXPERIMENT=${3:-elm_experiment_260925}
 
 BASEPATH=${4:-/users/sdtemple}
 PARTIALPATH=${5:-rvfl-proj/eiviani/tabarena-elm/tabflow_slurm}
+STORAGEPATH=${6:-/lustre/scratch5/sdtemple}
 
 if (( START > FINAL )); then
     echo "All array tasks have been submitted."
@@ -40,14 +41,14 @@ ARRAY_JOB_ID=$(
         --partition=standard \
         --cpus-per-task=8 \
         --mem=480G \
-        --time=8:00:00 \
+        --time=12:00:00 \
         --requeue \
         --job-name tabarena \
         --propagate=NONE \
         --export=ALL \
-        --output="$BASEPATH/slurm_out/${EXPERIMENT}/%A/slurm-%A_%a.out" \
-        $BASEPATH/$PARTIALPATH/submit_template.sh \
-        $BASEPATH/$PARTIALPATH/slurm_run_data_${EXPERIMENT}.json
+        --output="${STORAGEPATH}/slurm_out/${EXPERIMENT}/%A/slurm-%A_%a.out" \
+        ${BASEPATH}/${PARTIALPATH}/submit_template.sh \
+        ${BASEPATH}/${PARTIALPATH}/slurm_run_data_${EXPERIMENT}.json
 )
 
 echo "Submitted array job${ARRAY_JOB_ID}"
