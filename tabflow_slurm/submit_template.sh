@@ -82,7 +82,7 @@ RAY_TMP_PARENT="${TMPDIR:-/tmp/ray_tmp_sdtemple}"
 mkdir -p "$RAY_TMP_PARENT"
 
 RAY_TMPDIR="$(mktemp -d \
-    "${RAY_TMP_PARENT%/}/tabarena-ray-${SLURM_JOB_ID}-${SLURM_ARRAY_TASK_ID}")"
+    "${RAY_TMP_PARENT%/}/tabarena-ray-${SLURM_JOB_ID}-${SLURM_ARRAY_TASK_ID}-XXXXXXX")"
 export RAY_TMPDIR
 
 # Split CONFIG_INDEX into individual elements and loop
