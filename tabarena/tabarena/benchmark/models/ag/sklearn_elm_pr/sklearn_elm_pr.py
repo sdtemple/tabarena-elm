@@ -89,7 +89,7 @@ class ELMPRBase(AbstractModel):
             "activation": "identity",
             "weight_init": "uniform",
             "direct_links": False,
-            "seed": self.model_random_seed if hasattr(self, "model_random_seed") else 0,
+            "random_state": self.model_random_seed if hasattr(self, "model_random_seed") else 0,
             "ridge_alpha": 0.1,
             "rtol": None,
         }
