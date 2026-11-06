@@ -87,10 +87,10 @@ class ELMPRBase(AbstractModel):
         default_params = {
             "hidden_layer_sizes": (100,),
             "activation": "identity",
-            "weight_scheme": "uniform",
+            "weight_init": "uniform",
             "direct_links": False,
             "seed": self.model_random_seed if hasattr(self, "model_random_seed") else 0,
-            "reg_alpha": 0.1,
+            "ridge_alpha": 0.1,
             "rtol": None,
         }
         for param, val in default_params.items():
@@ -107,7 +107,7 @@ class ELMPRBase(AbstractModel):
         default_auxiliary_params.update(extra_auxiliary_params)
         return default_auxiliary_params
     
-    # @classmethod
+    # @classmethod1
     # def supported_problem_types(cls) -> list[str] | None:
     #     return ["binary", "multiclass", "regression"]
 

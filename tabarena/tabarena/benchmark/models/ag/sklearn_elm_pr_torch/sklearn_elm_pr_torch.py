@@ -79,14 +79,14 @@ class ELMPRTorchBase(AbstractModel):
             model_cls = ExtremeLearningClassifier
 
         X = self._preprocess(X, is_train=True)
-        # y = torch.from_numpy(y.to_numpy())
+        y_np = y.to_numpy(copy=False)
         params = self._get_model_params()
         
         params["direct_links"] = self.direct_links
 
         self.model = model_cls(**params)
         with config_context(array_api_dispatch=True):
-            self.model.fit(X, y)
+            self.model.fit(X, y_np)
 
     def _predict(self, X: pd.DataFrame, **kwargs) -> np.ndarray:
         """Preprocesses test data, converts to torch tensors, and outputs NumPy predictions."""
@@ -109,18 +109,29 @@ class ELMPRTorchBase(AbstractModel):
                 preds = self.model.predict_proba(X)
 
         if isinstance(preds, torch.Tensor):
-            return preds.detach().cpu().numpy()
-        return np.asarray(preds)
+            preds = preds.detach().cpu().numpy()
+        else:
+            preds = np.asarray(preds)
+
+        # this line is important!
+        # when you override the _predict_proba from the AbstractModel
+        # you can result in a shape output that doesn't align
+        # with the autogluon customized AUROC function.
+        # you get a rather uninformative error about there only being
+        # one class, which is not the actual error.
+        if self.problem_type != "regression":
+            preds = self._convert_proba_to_unified_form(preds)
+        return preds
 
     def _set_default_params(self):
         """Default parameters for the model."""
         default_params = {
             "hidden_layer_sizes": (100,),
             "activation": "identity",
-            "weight_scheme": "uniform",
+            "weight_init": "uniform",
             "direct_links": False,
             "seed": self.model_random_seed if hasattr(self, "model_random_seed") else 0,
-            "reg_alpha": 0.1,
+            "ridge_alpha": 0.1,
             "rtol": None,
         }
         for param, val in default_params.items():
