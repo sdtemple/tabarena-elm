@@ -29,6 +29,8 @@ BenchmarkSetup(
     models = [
         ("ELM", "all"),
         ("RVFL", "all"),
+        ("ELMPR", "all"),
+        ("RVFLPR", "all"),
     ],
     num_gpus=0,
     configs_per_job=400,

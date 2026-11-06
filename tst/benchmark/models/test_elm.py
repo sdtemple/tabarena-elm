@@ -17,3 +17,55 @@ def test_elm():
             f"Ensure you have the proper dependencies installed to run this test:\n"
             f"{err}"
         )
+
+def test_sklearn_pr():
+    model_hyperparameters = {}
+
+    try:
+        from autogluon.tabular.testing import FitHelper
+        from tabarena.benchmark.models.ag.sklearn_elm_pr.sklearn_elm_pr import ELMPR
+        model_cls = ELMPR
+        FitHelper.verify_model(model_cls=model_cls, model_hyperparameters=model_hyperparameters)
+    except ImportError as err:
+        pytest.skip(
+            f"Import Error, skipping test... "
+            f"Ensure you have the proper dependencies installed to run this test:\n"
+            f"{err}"
+        )
+    try:
+        from autogluon.tabular.testing import FitHelper
+        from tabarena.benchmark.models.ag.sklearn_elm_pr.sklearn_elm_pr import RVFLPR
+        model_cls = RVFLPR
+        FitHelper.verify_model(model_cls=model_cls, model_hyperparameters=model_hyperparameters)
+    except ImportError as err:
+        pytest.skip(
+            f"Import Error, skipping test... "
+            f"Ensure you have the proper dependencies installed to run this test:\n"
+            f"{err}"
+        )
+
+def test_sklearn_pr_torch():
+    model_hyperparameters = {}
+
+    try:
+        from autogluon.tabular.testing import FitHelper
+        from tabarena.benchmark.models.ag.sklearn_elm_pr_torch.sklearn_elm_pr_torch import ELMPRTorch
+        model_cls = ELMPRTorch
+        FitHelper.verify_model(model_cls=model_cls, model_hyperparameters=model_hyperparameters)
+    except ImportError as err:
+        pytest.skip(
+            f"Import Error, skipping test... "
+            f"Ensure you have the proper dependencies installed to run this test:\n"
+            f"{err}"
+        )
+    try:
+        from autogluon.tabular.testing import FitHelper
+        from tabarena.benchmark.models.ag.sklearn_elm_pr_torch.sklearn_elm_pr_torch import RVFLPRTorch
+        model_cls = RVFLPRTorch
+        FitHelper.verify_model(model_cls=model_cls, model_hyperparameters=model_hyperparameters)
+    except ImportError as err:
+        pytest.skip(
+            f"Import Error, skipping test... "
+            f"Ensure you have the proper dependencies installed to run this test:\n"
+            f"{err}"
+        )

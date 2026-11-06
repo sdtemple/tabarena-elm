@@ -27,10 +27,10 @@ BenchmarkSetup(
     slurm_cpu_partition = "standard",
     slurm_extra_gres = False,
     models = [
-        # ("ELM", "all"),
-        # ("RVFL", "all"),
         ("ELMTorch", "all"),
         ("RVFLTorch", "all"),
+        ("ELMPRTorch", "all"),
+        ("RVFLPRTorch", "all"),
     ],
     num_gpus=0,
     configs_per_job=400,

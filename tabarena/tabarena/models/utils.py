@@ -55,6 +55,10 @@ def get_configs_generator_from_name(model_name: str):
         "TabICLv2": lambda: importlib.import_module("tabarena.models.tabicl.generate").gen_tabiclv2,
         "ELMTorch": lambda: importlib.import_module("tabarena.models.gfdl_torch.generate").gen_elm,
         "RVFLTorch": lambda: importlib.import_module("tabarena.models.gfdl_torch.generate").gen_rvfl,
+        "ELMPR": lambda: importlib.import_module("tabarena.models.sklearn_elm_pr.generate").gen_elm,
+        "RVFLPR": lambda: importlib.import_module("tabarena.models.sklearn_elm_pr.generate").gen_rvfl,
+        "ELMPR": lambda: importlib.import_module("tabarena.models.sklearn_elm_pr_torch.generate").gen_elm,
+        "RVFLPR": lambda: importlib.import_module("tabarena.models.sklearn_elm_pr_torch.generate").gen_rvfl,
     }
 
     if model_name not in name_to_import_map:
