@@ -23,7 +23,7 @@ search_space = {
             "log_sigmoid",
             "log_softmax",
         ),
-        "weight_scheme": Categorical(
+        "weight_init": Categorical(
             "zeros",
             "uniform",
             "normal",
@@ -34,7 +34,7 @@ search_space = {
             "lecun_normal",
             "glorot_normal",
         ),
-        "reg_alpha": Real(1e-10, 100.0, default=None, log=True),
+        "ridge_alpha": Real(1e-10, 100.0, default=None, log=True),
     }
 
 manual_configs = [{}]
