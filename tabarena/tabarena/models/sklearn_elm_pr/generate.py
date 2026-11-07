@@ -17,7 +17,7 @@ search_space = {
             "identity",
             "tanh",
             "relu",
-            "sigmoid",
+            "logistic",
             "softmax",
             "softmin",
             "log_sigmoid",
