@@ -7,8 +7,9 @@ from datetime import datetime
 
 base_path = "/users/sdtemple/"
 storage_path = "/lustre/scratch5/sdtemple/"
-env = ".venv"
+env = ".venv-dev"
 partial_path = "rvfl-proj/eiviani/tabarena-elm"
+suffix = "sklearn_elm"
 formatted_date = datetime.today().strftime("%y%m%d")
 
 # # -- ELM Benchmark 07/30/2026
@@ -19,7 +20,7 @@ BenchmarkSetup(
     run_script_from_base_path = (
         f"{partial_path}/tabflow_slurm/run_tabarena_experiment.py"
     ),
-    benchmark_name=f"elm_experiment_{formatted_date}",
+    benchmark_name=f"elm_experiment_{formatted_date}_{suffix}",
     openml_cache_from_base_path = f"{partial_path}/tabflow_slurm/openml-cache",
     configs_path_from_base_path = (
         f"{partial_path}/tabflow_slurm/benchmark_configs_"
@@ -27,8 +28,8 @@ BenchmarkSetup(
     slurm_cpu_partition = "standard",
     slurm_extra_gres = False,
     models = [
-        ("ELM", "all"),
-        ("RVFL", "all"),
+        # ("ELM", "all"),
+        # ("RVFL", "all"),
         ("ELMPR", "all"),
         ("RVFLPR", "all"),
     ],

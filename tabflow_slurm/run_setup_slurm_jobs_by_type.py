@@ -9,6 +9,7 @@ base_path = "/users/sdtemple/"
 storage_path = "/lustre/scratch5/sdtemple/"
 env = ".venv"
 partial_path = "rvfl-proj/eiviani/tabarena-elm"
+suffix = "trees"
 formatted_date = datetime.today().strftime("%y%m%d")
 
 # # -- ELM Benchmark 04/03/2026
@@ -19,7 +20,7 @@ BenchmarkSetup(
     run_script_from_base_path = (
         f"{partial_path}/tabflow_slurm/run_tabarena_experiment.py"
     ),
-    benchmark_name=f"elm_experiment_{formatted_date}_binary",
+    benchmark_name=f"elm_experiment_{formatted_date}_binary_{suffix}",
     openml_cache_from_base_path = f"{partial_path}/tabflow_slurm/openml-cache",
     configs_path_from_base_path = (
         f"{partial_path}/tabflow_slurm/benchmark_configs_"
@@ -35,22 +36,22 @@ BenchmarkSetup(
         ("RandomForest", "all"),
         ("XGBoost", "all"),
         # -- Baselines
-        ("KNN", "all"),
-        ("Linear", "all"),
+        # ("KNN", "all"),
+        # ("Linear", "all"),
         # -- Other
-        ("xRFM", "all"),
+        # ("xRFM", "all"),
         # ("ELM", "all"),
         # existing models …
-        ("TabDPT", "all"),
-        ("TabICL", "all"),
-        ("TabPFNv2", "all"),
-        ("Mitra", "all"),
+        # ("TabDPT", "all"),
+        # ("TabICL", "all"),
+        # ("TabPFNv2", "all"),
+        # ("Mitra", "all"),
         # -- Neural networks
-        ("TabM", "all"),
-        ("RealMLP", "all"),
-        ("ModernNCA", "all"),
-        ("FastaiMLP", "all"),
-        ("TorchMLP", "all"),
+        # ("TabM", "all"),
+        # ("RealMLP", "all"),
+        # ("ModernNCA", "all"),
+        # ("FastaiMLP", "all"),
+        # ("TorchMLP", "all"),
     ],
     num_gpus=0,
     configs_per_job=20,
@@ -67,7 +68,7 @@ BenchmarkSetup(
     run_script_from_base_path = (
         f"{partial_path}/tabflow_slurm/run_tabarena_experiment.py"
     ),
-    benchmark_name=f"elm_experiment_{formatted_date}_multiclass",
+    benchmark_name=f"elm_experiment_{formatted_date}_multiclass_{suffix}",
     openml_cache_from_base_path = f"{partial_path}/tabflow_slurm/openml-cache",
     configs_path_from_base_path = (
         f"{partial_path}/tabflow_slurm/benchmark_configs_"
@@ -83,22 +84,22 @@ BenchmarkSetup(
         ("RandomForest", "all"),
         ("XGBoost", "all"),
         # -- Baselines
-        ("KNN", "all"),
-        ("Linear", "all"),
+        # ("KNN", "all"),
+        # ("Linear", "all"),
         # -- Other
-        ("xRFM", "all"),
+        # ("xRFM", "all"),
         # ("ELM", "all"),
         # existing models …
-        ("TabDPT", "all"),
-        ("TabICL", "all"),
-        ("TabPFNv2", "all"),
-        ("Mitra", "all"),
+        # ("TabDPT", "all"),
+        # ("TabICL", "all"),
+        # ("TabPFNv2", "all"),
+        # ("Mitra", "all"),
         # -- Neural networks
-        ("TabM", "all"),
-        ("RealMLP", "all"),
-        ("ModernNCA", "all"),
-        ("FastaiMLP", "all"),
-        ("TorchMLP", "all"),
+        # ("TabM", "all"),
+        # ("RealMLP", "all"),
+        # ("ModernNCA", "all"),
+        # ("FastaiMLP", "all"),
+        # ("TorchMLP", "all"),
     ],
     num_gpus=0,
     configs_per_job=20,
@@ -115,7 +116,7 @@ BenchmarkSetup(
     run_script_from_base_path = (
         f"{partial_path}/tabflow_slurm/run_tabarena_experiment.py"
     ),
-    benchmark_name=f"elm_experiment_{formatted_date}_regression",
+    benchmark_name=f"elm_experiment_{formatted_date}_regression_{suffix}",
     openml_cache_from_base_path = f"{partial_path}/tabflow_slurm/openml-cache",
     configs_path_from_base_path = (
         f"{partial_path}/tabflow_slurm/benchmark_configs_"
@@ -131,22 +132,22 @@ BenchmarkSetup(
         ("RandomForest", "all"),
         ("XGBoost", "all"),
         # -- Baselines
-        ("KNN", "all"),
-        ("Linear", "all"),
+        # ("KNN", "all"),
+        # ("Linear", "all"),
         # -- Other
-        ("xRFM", "all"),
+        # ("xRFM", "all"),
         # ("ELM", "all"),
         # existing models …
-        ("TabDPT", "all"),
-        ("TabICL", "all"),
-        ("TabPFNv2", "all"),
-        ("Mitra", "all"),
+        # ("TabDPT", "all"),
+        # ("TabICL", "all"),
+        # ("TabPFNv2", "all"),
+        # ("Mitra", "all"),
         # -- Neural networks
-        ("TabM", "all"),
-        ("RealMLP", "all"),
-        ("ModernNCA", "all"),
-        ("FastaiMLP", "all"),
-        ("TorchMLP", "all"),
+        # ("TabM", "all"),
+        # ("RealMLP", "all"),
+        # ("ModernNCA", "all"),
+        # ("FastaiMLP", "all"),
+        # ("TorchMLP", "all"),
     ],
     num_gpus=0,
     configs_per_job=20,
