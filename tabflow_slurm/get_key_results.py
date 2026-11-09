@@ -35,7 +35,8 @@ for path in Path(folder_input).glob(f"*/*/*/results.pkl"):  # adjust pattern as 
             if wanted_keys[k] is None:
                 rows[k].append(v)
             else:
-                for a, b in row.items():
+                subrow = {a: b for a, b in row[k].items()}
+                for a, b in subrow.items():
                     try:
                         rows[a].append(b)
                     except:
