@@ -24,8 +24,14 @@ for v in multiple:
 
 rows = {k: [] for k in header}
 
-for path in Path(folder_input).glob(f"*/*/*/results.pkl"):  # adjust pattern as needed
-    print(f"Processing results from {path}")
+prev_model = ""
+base = Path(folder_input).resolve()
+for path in base.glob(f"*/*/*/results.pkl"):  # adjust pattern as needed
+    relative_path = path.relative_to(base)
+    curr_model = relative_path.parts[0]
+    if curr_model != prev_model:
+        print(f"Processing results from {path}")
+        prev_model = curr_model
     try:
         with path.open("rb") as f:
             result = pickle.load(f)
