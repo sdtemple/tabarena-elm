@@ -1,6 +1,9 @@
 from pathlib import Path
 import pickle
 import pandas as pd
+import sys
+
+folder_input, file_output = sys.argv[1:] 
 
 wanted_keys = {
     "framework": None,
@@ -20,7 +23,7 @@ for k, v in wanted_keys.items():
 
 rows = {k: [] for k in header}
 
-for path in Path(".").glob("*/*/*/results.pkl"):  # adjust pattern as needed
+for path in Path(".").glob(f"{folder_input}/*/*/*/results.pkl"):  # adjust pattern as needed
     try:
         with path.open("rb") as f:
             result = pickle.load(f)
@@ -40,4 +43,4 @@ for path in Path(".").glob("*/*/*/results.pkl"):  # adjust pattern as needed
         print(f"Skipping {path}: {exc}")
 
 df = pd.DataFrame(rows)
-df.to_parquet("results_summary.parquet", index=False)
+df.to_parquet(file_output, index=False)
