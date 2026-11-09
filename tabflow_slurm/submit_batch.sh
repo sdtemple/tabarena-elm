@@ -4,7 +4,7 @@ set -euo pipefail
 
 START=${1:-0}
 FINAL=${2:-1} # change to value from stdout
-CHUNK_SIZE=98 # one reserved for controller
+CHUNK_SIZE=256 # one reserved for controller
 
 EXPERIMENT=${3:-elm_experiment_260925}
 
