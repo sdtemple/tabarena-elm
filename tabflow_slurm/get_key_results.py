@@ -24,6 +24,7 @@ for k, v in wanted_keys.items():
 rows = {k: [] for k in header}
 
 for path in Path(".").glob(f"{folder_input}/*/*/*/results.pkl"):  # adjust pattern as needed
+    print(f"Processing results from {path}")
     try:
         with path.open("rb") as f:
             result = pickle.load(f)
