@@ -1,0 +1,1 @@
+find . -mindepth 4 -maxdepth 4 -type f -name results.pkl -printf '%h\n' | awk -F/ '{print $(NF-1)}' | sort | uniq -c | sort -k2,2 >> completed_datasets.txt
