@@ -24,7 +24,7 @@ for v in multiple:
 
 rows = {k: [] for k in header}
 
-for path in Path(".").glob(f"{folder_input}/*/*/*/results.pkl"):  # adjust pattern as needed
+for path in Path(folder_input).glob(f"*/*/*/results.pkl"):  # adjust pattern as needed
     print(f"Processing results from {path}")
     try:
         with path.open("rb") as f:
