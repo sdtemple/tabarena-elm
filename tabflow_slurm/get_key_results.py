@@ -17,8 +17,9 @@ wanted_keys = {
     "metric": None,
 }
 
-header = [k for k, v in wanted_keys.items() if v is not None]
-for k, v in wanted_keys.items():
+header = [k for k, v in wanted_keys.items() if v is None]
+multiple = [v for v in wanted_keys.values() if v is not None]
+for v in multiple:
     header.extend(v)
 
 rows = {k: [] for k in header}
