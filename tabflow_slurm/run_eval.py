@@ -31,7 +31,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--name",
         type=str,
-        default="elm_experiment_073026",
+        default="elm_experiment_261107_sklearn_elm",
         help="`benchmark_name` set in `run_setup_slurm_jobs.py`",
     )
 
@@ -39,13 +39,31 @@ if __name__ == "__main__":
         "--methods",
         nargs='+',
         type=str,
-        default="GFDL",
+        default="rvfl_pr",
+        help="methods to be evaluated, defaults to gfdl",
+    )
+
+    parser.add_argument(
+        "--tabflow_slurm",
+        nargs='+',
+        type=str,
+        default="/users/sdtemple/rvfl-proj/eiviani/tabarena-elm/tabflow_slurm",
+        help="methods to be evaluated, defaults to gfdl",
+    )
+
+    parser.add_argument(
+        "--output_path",
+        nargs='+',
+        type=str,
+        default="/lustre/scratch5/sdtemple/output",
         help="methods to be evaluated, defaults to gfdl",
     )
     
     dataset = parser.parse_args().dataset
     dl = parser.parse_args().direct_links
     exp = parser.parse_args().name
+    tabflow_slurm_path = parser.parse_args().tabflow_slurm
+    output_path = parser.parse_args().output_path
 
     meths = parser.parse_args().methods
 
@@ -57,11 +75,11 @@ if __name__ == "__main__":
 
     scheme = "" if dl=="both" else f"/{dl}_direct_links"
 
-    config_path = Path(f"/vast/home/eiviani/tabarena/tabflow_slurm/benchmark_configs_{exp}{suff}.yaml")
+    config_path = Path(f"{tabflow_slurm_path}/benchmark_configs_{exp}{suff}.yaml")
     with open(config_path, 'r') as f:
         all_configs = yaml.safe_load(f)
 
-    base_path = Path(f"/vast/home/eiviani/output/{exp}{suff}")
+    base_path = Path(f"{output_path}/{exp}{suff}")
     direct_links_base = base_path / "with_direct_links"
     no_direct_links_base = base_path / "without_direct_links"
 
@@ -97,7 +115,16 @@ if __name__ == "__main__":
     for config in all_configs['methods']:
         cls = config.get('model_cls')
 
-        if cls not in ['gfdl','CELM','sELM']: continue
+        # if cls not in ['gfdl','CELM','sELM']: continue
+        gfdl_methods = ["gfdl", 
+                        "gfdl_torch", 
+                        "rvfl_pr", 
+                        "elm_pr",
+                        "rvfl_pr_torch", 
+                        "elm_pr_torch",
+                        ]
+        if cls not in gfdl_methods:
+            continue
 
         method_kwargs = config.get('method_kwargs', {})
         model_hyperparams = config.get('model_hyperparameters', {})
@@ -118,7 +145,7 @@ if __name__ == "__main__":
 
     models = [
             ModelMetadata(
-                path_raw=Path(f"/vast/home/eiviani/output/{exp}{suff}{scheme}/{cls}"),
+                path_raw=Path(f"{output_path}/{exp}{suff}{scheme}/{cls}"),
                 method=cls,
                 only_load_cache=False,
             ) for cls in meths]
