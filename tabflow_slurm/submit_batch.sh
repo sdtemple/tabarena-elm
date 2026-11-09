@@ -39,8 +39,8 @@ ARRAY_JOB_ID=$(
     sbatch --parsable \
         --array="${START}-${END}%${CHUNK_SIZE}" \
         --partition=standard \
-        --cpus-per-task=16 \
-        --mem=496G \
+        --cpus-per-task=8 \
+        --mem=480G \
         --time=15:55:00 \
         --requeue \
         --job-name tabarena \

@@ -7,7 +7,7 @@ from datetime import datetime
 
 base_path = "/users/sdtemple/"
 storage_path = "/lustre/scratch5/sdtemple/"
-env = ".venv"
+env = ".venv-dev"
 partial_path = "rvfl-proj/eiviani/tabarena-elm"
 suffix = "trees"
 formatted_date = datetime.today().strftime("%y%m%d")
