@@ -30,7 +30,7 @@ for path in base.glob(f"*/*/*/results.pkl"):  # adjust pattern as needed
     relative_path = path.relative_to(base)
     curr_model = relative_path.parts[0]
     if curr_model != prev_model:
-        print(f"Processing results from {path}")
+        print(f"Processing results from {curr_model}")
         prev_model = curr_model
     try:
         with path.open("rb") as f:
