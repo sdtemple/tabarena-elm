@@ -151,7 +151,6 @@ BenchmarkSetup(
     ],
     num_gpus=0,
     configs_per_job=20,
-    
     problem_types_to_run="regression",
     tabarena_lite=True,
     n_random_configs=100

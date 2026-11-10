@@ -8,7 +8,7 @@ folder_input, file_output = sys.argv[1:]
 wanted_keys = {
     "framework": None,
     "problem_type": None,
-    "task_metadata": ["tid", "name", "fold"],
+    "task_metadata": ["tid", "name", "fold", "repeat"],
     "time_train_s": None,
     "time_infer_s": None,
     "memory_usage": ["peak_mem_cpu"],
