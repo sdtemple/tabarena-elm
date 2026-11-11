@@ -16,6 +16,7 @@ from tabarena.benchmark.models.ag.xrfm.xrfm_model import XRFMModel
 from tabarena.benchmark.models.ag.gfdl_torch.gfdl_torch import RVFLTorch, ELMTorch
 from tabarena.benchmark.models.ag.sklearn_elm_pr_torch.sklearn_elm_pr_torch import RVFLPRTorch, ELMPRTorch
 from tabarena.benchmark.models.ag.sklearn_elm_pr.sklearn_elm_pr import RVFLPR, ELMPR
+from tabarena.benchmark.models.ag.sklearn_elm_gpu.sklearn_elm_gpu import RVFLGPU, ELMGPU
 
 __all__ = [
     "ExplainableBoostingMachineModel",
@@ -39,4 +40,6 @@ __all__ = [
     "RVFLPR",
     "ELMPRTorch",
     "RVFLPRTorch",
+    "ELMGPU",
+    "RVFLGPU",
 ]

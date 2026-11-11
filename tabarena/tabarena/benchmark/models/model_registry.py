@@ -26,6 +26,8 @@ from tabarena.benchmark.models.ag import (
     ELMPR,
     RVFLPRTorch,
     ELMPRTorch,
+    ELMGPU,
+    RVFLGPU,
 )
 
 tabarena_model_registry: ModelRegistry = copy.deepcopy(ag_model_registry)
@@ -52,6 +54,8 @@ _models_to_add = [
     ELMPR,
     RVFLPRTorch,
     ELMPRTorch,
+    ELMGPU,
+    RVFLGPU,
 ]
 
 for _model_cls in _models_to_add:
