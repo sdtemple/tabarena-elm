@@ -4,13 +4,13 @@ set -euo pipefail
 
 START=${1:-0}
 FINAL=${2:-1} # change to value from stdout
-CHUNK_SIZE=256 # one reserved for controller
+CHUNK_SIZE=${3:-256} # one reserved for controller
 
-EXPERIMENT=${3:-elm_experiment_260925}
+EXPERIMENT=${4:-elm_experiment_260925}
 
-BASEPATH=${4:-/users/sdtemple}
-PARTIALPATH=${5:-rvfl-proj/eiviani/tabarena-elm/tabflow_slurm}
-STORAGEPATH=${6:-/lustre/scratch5/sdtemple}
+BASEPATH=${5:-/users/sdtemple}
+PARTIALPATH=${6:-rvfl-proj/eiviani/tabarena-elm/tabflow_slurm}
+STORAGEPATH=${7:-/lustre/scratch5/sdtemple}
 
 if (( START > FINAL )); then
     echo "All array tasks have been submitted."
