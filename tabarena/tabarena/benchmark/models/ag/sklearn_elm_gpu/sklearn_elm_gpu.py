@@ -3,6 +3,7 @@ from __future__ import annotations
 import numpy as np
 
 from autogluon.core.models import AbstractModel
+from autogluon.common.utils.resource_utils import ResourceManager
 from autogluon.features.generators import LabelEncoderFeatureGenerator
 from sklearn.preprocessing import StandardScaler
 
@@ -148,6 +149,14 @@ class ELMGPUBase(AbstractModel):
         }
         default_auxiliary_params.update(extra_auxiliary_params)
         return default_auxiliary_params
+
+    def _get_default_resources(self) -> tuple[int, int]:
+        # Use only physical cores for better performance based on benchmarks
+        num_cpus = ResourceManager.get_cpu_count(only_physical_cores=True)
+
+        num_gpus = min(1, ResourceManager.get_gpu_count_torch(cuda_only=True))
+
+        return num_cpus, num_gpus
     
     # @classmethod
     # def supported_problem_types(cls) -> list[str] | None:
